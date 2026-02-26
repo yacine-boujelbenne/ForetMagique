@@ -1,0 +1,15 @@
+C:\Users\win10\OneDrive\Bureau\work\ENIT\2eme\c#\work\TD3\LaForetMagique\LaForetMagique\bin\Debug\net9.0\LaForetMagique.deps.json
+C:\Users\win10\OneDrive\Bureau\work\ENIT\2eme\c#\work\TD3\LaForetMagique\LaForetMagique\bin\Debug\net9.0\LaForetMagique.runtimeconfig.json
+C:\Users\win10\OneDrive\Bureau\work\ENIT\2eme\c#\work\TD3\LaForetMagique\LaForetMagique\bin\Debug\net9.0\LaForetMagique.dll
+C:\Users\win10\OneDrive\Bureau\work\ENIT\2eme\c#\work\TD3\LaForetMagique\LaForetMagique\bin\Debug\net9.0\LaForetMagique.pdb
+C:\Users\win10\OneDrive\Bureau\work\ENIT\2eme\c#\work\TD3\LaForetMagique\LaForetMagique\obj\Debug\net9.0\LaForetMagique.csproj.AssemblyReference.cache
+C:\Users\win10\OneDrive\Bureau\work\ENIT\2eme\c#\work\TD3\LaForetMagique\LaForetMagique\obj\Debug\net9.0\LaForetMagique.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\win10\OneDrive\Bureau\work\ENIT\2eme\c#\work\TD3\LaForetMagique\LaForetMagique\obj\Debug\net9.0\LaForetMagique.AssemblyInfoInputs.cache
+C:\Users\win10\OneDrive\Bureau\work\ENIT\2eme\c#\work\TD3\LaForetMagique\LaForetMagique\obj\Debug\net9.0\LaForetMagique.AssemblyInfo.cs
+C:\Users\win10\OneDrive\Bureau\work\ENIT\2eme\c#\work\TD3\LaForetMagique\LaForetMagique\obj\Debug\net9.0\LaForetMagique.csproj.CoreCompileInputs.cache
+C:\Users\win10\OneDrive\Bureau\work\ENIT\2eme\c#\work\TD3\LaForetMagique\LaForetMagique\obj\Debug\net9.0\LaForetMagique.sourcelink.json
+C:\Users\win10\OneDrive\Bureau\work\ENIT\2eme\c#\work\TD3\LaForetMagique\LaForetMagique\obj\Debug\net9.0\LaForetMagique.dll
+C:\Users\win10\OneDrive\Bureau\work\ENIT\2eme\c#\work\TD3\LaForetMagique\LaForetMagique\obj\Debug\net9.0\refint\LaForetMagique.dll
+C:\Users\win10\OneDrive\Bureau\work\ENIT\2eme\c#\work\TD3\LaForetMagique\LaForetMagique\obj\Debug\net9.0\LaForetMagique.pdb
+C:\Users\win10\OneDrive\Bureau\work\ENIT\2eme\c#\work\TD3\LaForetMagique\LaForetMagique\obj\Debug\net9.0\LaForetMagique.genruntimeconfig.cache
+C:\Users\win10\OneDrive\Bureau\work\ENIT\2eme\c#\work\TD3\LaForetMagique\LaForetMagique\obj\Debug\net9.0\ref\LaForetMagique.dll
