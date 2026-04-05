@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LaForetMagique.Migrations
 {
     [DbContext(typeof(LaforetMagiqueDbContext))]
-    [Migration("20260225212829_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20260403144011_first_migration")]
+    partial class first_migration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -70,7 +70,8 @@ namespace LaForetMagique.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
 
                     b.HasDiscriminator().HasValue("Creature");
                 });
