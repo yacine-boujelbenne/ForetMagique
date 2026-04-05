@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LaForetMagique.Models
 {
-    internal class Schtroumpf : Creature
+    public class Schtroumpf : Creature
     {
         public string Role { get; set; } = "Schtroumpf Voyageur";
 

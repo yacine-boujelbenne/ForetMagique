@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("LaForetMagique")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1fb31c964ad322afabc7b7d6769d8e46014d5f5b")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5e8529cbd806a24331915cb6a7672bc88f3941d6")]
 [assembly: System.Reflection.AssemblyProductAttribute("LaForetMagique")]
 [assembly: System.Reflection.AssemblyTitleAttribute("LaForetMagique")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

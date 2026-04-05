@@ -9,7 +9,7 @@ using LaForetMagique.Models;
 
 namespace LaForetMagique.Data
 {
-    internal class LaforetMagiqueDbContext : DbContext
+    public class LaforetMagiqueDbContext : DbContext
     {
         public DbSet<Entity> Entities { get; set; } = null!;
         public DbSet<Creature> Creatures { get; set; } = null!;

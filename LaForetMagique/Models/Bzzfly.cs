@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LaForetMagique.Models
 {
-    internal class Bzzfly : Bug
+    public class Bzzfly : Bug
     {
         public int FlightSpeed { get; set; }
         public Bzzfly()
