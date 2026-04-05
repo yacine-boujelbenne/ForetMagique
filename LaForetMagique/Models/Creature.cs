@@ -9,7 +9,6 @@ namespace LaForetMagique.Models
 {
     public abstract class Creature : Entity
     {
-        [Key]
         [MaxLength(10), MinLength(5)]
         public string Name { get; set; } = string.Empty;
 

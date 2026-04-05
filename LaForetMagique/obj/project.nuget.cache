@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "x+fD67y28gI=",
+  "dgSpecHash": "+H9i+6EoWCw=",
   "success": true,
-  "projectFilePath": "C:\\Users\\win10\\OneDrive\\Bureau\\work\\ENIT\\2eme\\c#\\work\\TD3\\LaForetMagique\\LaForetMagique\\LaForetMagique.csproj",
+  "projectFilePath": "C:\\Users\\win10\\OneDrive\\Bureau\\ForetMagique\\LaForetMagique\\LaForetMagique.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\win10\\.nuget\\packages\\azure.core\\1.38.0\\azure.core.1.38.0.nupkg.sha512",
     "C:\\Users\\win10\\.nuget\\packages\\azure.identity\\1.11.4\\azure.identity.1.11.4.nupkg.sha512",

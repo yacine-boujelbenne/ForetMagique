@@ -67,7 +67,8 @@ namespace LaForetMagique.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
 
                     b.HasDiscriminator().HasValue("Creature");
                 });

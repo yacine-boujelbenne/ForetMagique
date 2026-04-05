@@ -1,16 +1,16 @@
-﻿namespace LaForetmagiqueWin
+﻿namespace LaForetmagiqueWin.GameObject
 {
-    partial class game
+    partial class Coin
     {
-        /// <summary>
-        ///  Required designer variable.
+        /// <summary> 
+        /// Variable nécessaire au concepteur.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary>
-        ///  Clean up any resources being used.
+        /// <summary> 
+        /// Nettoyage des ressources utilisées.
         /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        /// <param name="disposing">true si les ressources managées doivent être supprimées ; sinon, false.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -20,38 +20,36 @@
             base.Dispose(disposing);
         }
 
-        #region Windows Form Designer generated code
+        #region Code généré par le Concepteur de composants
 
-        /// <summary>
-        ///  Required method for Designer support - do not modify
-        ///  the contents of this method with the code editor.
+        /// <summary> 
+        /// Méthode requise pour la prise en charge du concepteur - ne modifiez pas 
+        /// le contenu de cette méthode avec l'éditeur de code.
         /// </summary>
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
             pictureBox1 = new PictureBox();
-            timer1 = new System.Windows.Forms.Timer(components);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // pictureBox1
             // 
-            pictureBox1.Image = Properties.Resources.pixil_frame_0;
-            pictureBox1.Location = new Point(290, 90);
+            pictureBox1.Image = Properties.Resources.coin;
+            pictureBox1.Location = new Point(-2, -2);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(81, 90);
+            pictureBox1.Size = new Size(15, 15);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
             // 
-            // game
+            // Coin
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            BackColor = Color.Transparent;
             Controls.Add(pictureBox1);
-            Name = "game";
-            Text = "Game";
+            Name = "Coin";
+            Size = new Size(36, 36);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
         }
@@ -59,6 +57,5 @@
         #endregion
 
         private PictureBox pictureBox1;
-        private System.Windows.Forms.Timer timer1;
     }
 }
