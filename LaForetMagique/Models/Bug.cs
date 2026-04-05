@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LaForetMagique.Models
 {
-    internal abstract class Bug : Creature
+    public abstract class Bug : Creature
     {
         public int AttackPower { get; set; }
 

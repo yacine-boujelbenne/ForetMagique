@@ -15,6 +15,9 @@ namespace LaForetmagiqueWin.GameObject
     public partial class Player : UserControl
     {
         private int speed = 5;
+        private bool isFrame1 = true;
+        private int animationDelay = 0;
+        private bool facingLeft = false;
 
         public Player()
         {
@@ -25,66 +28,69 @@ namespace LaForetmagiqueWin.GameObject
 
         private void Update(object sender, EventArgs e)
         {
-            if (Core.IsUp)
+            if (this.Parent == null) return;
+
+            if (Core.IsUp && this.Top > 0)
             {
                 this.Top -= speed;
                 moveB();
             }
-            if (Core.IsDown)
+            if (Core.IsDown && this.Bottom < this.Parent.ClientSize.Height)
             {
                 this.Top += speed;
                 moveF();
             }
-            if (Core.IsLeft)
+            if (Core.IsLeft && this.Left > 0)
             {
                 this.Left -= speed;
                 moveL();
             }
-            if (Core.IsRight)
+            if (Core.IsRight && this.Right < this.Parent.ClientSize.Width)
             {
                 this.Left += speed;
                 moveR();
 
             }
         }
-        private void moveR()
+        private void AnimateMovement()
         {
-            if (Core.IsRight)
+            animationDelay++;
+            if (animationDelay >= 5)
             {
-                pictureBox1.Image = Properties.Resources.pixil_frame_1;
-
-
-
+                isFrame1 = !isFrame1;
+                animationDelay = 0;
             }
 
-
-
-
+            if (facingLeft)
+            {
+                pictureBox1.Image = isFrame1 ? Properties.Resources.pixil_frame_1L : Properties.Resources.pixil_frame_2L;
+            }
+            else
+            {
+                pictureBox1.Image = isFrame1 ? Properties.Resources.pixil_frame_1 : Properties.Resources.pixil_frame_2;
+            }
         }
+
+        private void moveR()
+        {
+            facingLeft = false;
+            AnimateMovement();
+        }
+
         private void moveL()
         {
-            pictureBox1.Image = Properties.Resources.pixil_frame_1;
-
-            pictureBox1.Image = Properties.Resources.pixil_frame_2;
-
-
-            
+            facingLeft = true;
+            AnimateMovement();
         }
+
         private void moveF()
         {
-            pictureBox1.Image = Properties.Resources.pixil_frame_2;
- 
-            pictureBox1.Image = Properties.Resources.pixil_frame_1;
-   
-
+            AnimateMovement();
         }
-            private void moveB()
-            {
-                pictureBox1.Image = Properties.Resources.pixil_frame_2;
 
-                pictureBox1.Image = Properties.Resources.pixil_frame_1;
- 
-
+        private void moveB()
+        {
+            AnimateMovement();
         }
 
 

@@ -26,7 +26,8 @@ namespace LaForetmagiqueWin.src
 
         public static List<Coin> coins = new List<Coin>();
 
-        public static int score = 0;
+        public static int sante = 100;
+        public static int berriesCollected = 0;
 
 
     }

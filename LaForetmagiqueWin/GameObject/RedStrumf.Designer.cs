@@ -1,6 +1,6 @@
 ﻿namespace LaForetmagiqueWin.GameObject
 {
-    partial class Coin
+    partial class RedStrumf
     {
         /// <summary> 
         /// Variable nécessaire au concepteur.
@@ -34,22 +34,22 @@
             // 
             // pictureBox1
             // 
-            pictureBox1.Image = Properties.Resources.pngtree_blueberry_vector_pixel_art_png_image_13730496_2331672306;
+            pictureBox1.Image = Properties.Resources.LepereSmurf;
             pictureBox1.Location = new Point(0, 0);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(19, 19);
+            pictureBox1.Size = new Size(56, 58);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
             // 
-            // Coin
+            // RedStrumf
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Transparent;
             Controls.Add(pictureBox1);
-            Name = "Coin";
-            Size = new Size(24, 23);
+            Name = "RedStrumf";
+            Size = new Size(56, 60);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
         }

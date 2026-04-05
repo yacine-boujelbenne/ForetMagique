@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LaForetMagique.Models
 {
-    internal class Spider : Bug
+    public class Spider : Bug
     {
         public int WebStrength { get; set; }
 

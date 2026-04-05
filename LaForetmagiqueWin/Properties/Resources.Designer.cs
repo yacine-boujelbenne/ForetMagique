@@ -83,9 +83,9 @@ namespace LaForetmagiqueWin.Properties {
         /// <summary>
         ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap map {
+        internal static System.Drawing.Bitmap LepereSmurf {
             get {
-                object obj = ResourceManager.GetObject("map", resourceCulture);
+                object obj = ResourceManager.GetObject("LepereSmurf", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -93,9 +93,9 @@ namespace LaForetmagiqueWin.Properties {
         /// <summary>
         ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap pixil_frame_0 {
+        internal static System.Drawing.Bitmap map {
             get {
-                object obj = ResourceManager.GetObject("pixil-frame-0", resourceCulture);
+                object obj = ResourceManager.GetObject("map", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -113,6 +113,16 @@ namespace LaForetmagiqueWin.Properties {
         /// <summary>
         ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap pixil_frame_1L {
+            get {
+                object obj = ResourceManager.GetObject("pixil-frame-1L", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap pixil_frame_2 {
             get {
                 object obj = ResourceManager.GetObject("pixil-frame-2", resourceCulture);
@@ -123,9 +133,9 @@ namespace LaForetmagiqueWin.Properties {
         /// <summary>
         ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap pixil_frame_3 {
+        internal static System.Drawing.Bitmap pixil_frame_2L {
             get {
-                object obj = ResourceManager.GetObject("pixil-frame-3", resourceCulture);
+                object obj = ResourceManager.GetObject("pixil-frame-2L", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -133,9 +143,9 @@ namespace LaForetmagiqueWin.Properties {
         /// <summary>
         ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap pixil_frame_4 {
+        internal static System.Drawing.Bitmap pngtree_blueberry_vector_pixel_art_png_image_13730496_2331672306 {
             get {
-                object obj = ResourceManager.GetObject("pixil-frame-4", resourceCulture);
+                object obj = ResourceManager.GetObject("pngtree-blueberry-vector-pixel-art-png-image_13730496-2331672306", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -143,9 +153,9 @@ namespace LaForetmagiqueWin.Properties {
         /// <summary>
         ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap pixil_frame_5 {
+        internal static System.Drawing.Bitmap téléchargé {
             get {
-                object obj = ResourceManager.GetObject("pixil-frame-5", resourceCulture);
+                object obj = ResourceManager.GetObject("téléchargé", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -153,9 +163,9 @@ namespace LaForetmagiqueWin.Properties {
         /// <summary>
         ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap pixil_frame_6 {
+        internal static System.Drawing.Bitmap téléchargéR {
             get {
-                object obj = ResourceManager.GetObject("pixil-frame-6", resourceCulture);
+                object obj = ResourceManager.GetObject("téléchargéR", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -163,9 +173,19 @@ namespace LaForetmagiqueWin.Properties {
         /// <summary>
         ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap pixil_frame_7 {
+        internal static System.Drawing.Bitmap teleL {
             get {
-                object obj = ResourceManager.GetObject("pixil-frame-7", resourceCulture);
+                object obj = ResourceManager.GetObject("teleL", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap teleR {
+            get {
+                object obj = ResourceManager.GetObject("teleR", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
