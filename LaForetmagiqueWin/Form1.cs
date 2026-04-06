@@ -20,6 +20,7 @@ namespace LaForetmagiqueWin
         private LaforetMagiqueDbContext _dbContext;
         private Schtroumpf _dbPlayer;
         private Panel _pausePanel;
+        private Label _lblPressE;
 
         public Form1()
         {
@@ -30,10 +31,23 @@ namespace LaForetmagiqueWin
             this.KeyPreview = true;
 
             _dbContext = new LaforetMagiqueDbContext();
+            //_dbContext.Database.EnsureDeleted(); // Ensure old schema is wiped
+            _dbContext.Database.EnsureCreated(); // Recreate with new TPT schema
+
             _dbPlayer = new Schtroumpf { Name = "Gamer", Health = Core.sante, MaxHealth = 100, Role = "Player" };
             _dbContext.Schtroumpfs.Add(_dbPlayer);
             _dbContext.SaveChanges();
 
+            // Setup Press E Label
+            _lblPressE = new Label();
+            _lblPressE.Text = "Press E";
+            _lblPressE.AutoSize = true;
+            _lblPressE.BackColor = Color.Black;
+            _lblPressE.ForeColor = Color.White;
+            _lblPressE.Font = new Font("Joystix Monospace", 10, FontStyle.Bold);
+            _lblPressE.Visible = false;
+            this.Controls.Add(_lblPressE);
+            
             // Setup Pause Panel
             _pausePanel = new Panel();
             _pausePanel.Size = new Size(240, 160);
@@ -52,10 +66,11 @@ namespace LaForetmagiqueWin
 
             Label btnResume = new Label();
             btnResume.Text = "Resume";
+            btnResume.ForeColor = Color.White;
             btnResume.TextAlign = ContentAlignment.MiddleCenter;
             btnResume.Size = new Size(160, 35);
             btnResume.Location = new Point(40, 60);
-            btnResume.BackColor = Color.LightGreen;
+            btnResume.BackColor = Color.Green;
             btnResume.BorderStyle = BorderStyle.FixedSingle;
             btnResume.Cursor = Cursors.Hand;
             btnResume.Click += (s, ev) => 
@@ -67,10 +82,11 @@ namespace LaForetmagiqueWin
 
             Label btnMainMenu = new Label();
             btnMainMenu.Text = "Main Menu";
+            btnMainMenu.ForeColor = Color.White;
             btnMainMenu.TextAlign = ContentAlignment.MiddleCenter;
             btnMainMenu.Size = new Size(160, 35);
             btnMainMenu.Location = new Point(40, 105);
-            btnMainMenu.BackColor = Color.LightCoral;
+            btnMainMenu.BackColor = Color.Coral;
             btnMainMenu.BorderStyle = BorderStyle.FixedSingle;
             btnMainMenu.Cursor = Cursors.Hand;
             btnMainMenu.Click += (s, ev) => 
@@ -145,6 +161,24 @@ namespace LaForetmagiqueWin
             if (e.KeyCode == Keys.Right | e.KeyCode == Core.keyRight)
             {
                 Core.IsRight = true;
+            }
+            if (e.KeyCode == Keys.E && _lblPressE.Visible)
+            {
+                OpenExchangeWindow();
+            }
+            if (e.KeyCode == Keys.F)
+            {
+                if (Core.redPotionsCollected > 0)
+                {
+                    Core.redPotionsCollected--;
+                    lblRedPotion.Text = "Red Potions: " + Core.redPotionsCollected;
+                    Core.sante = Math.Min(Core.sante + 50, hpBar.Maximum); // heal 50
+                    _dbPlayer.Health = Core.sante;
+                    _dbContext.SaveChanges();
+                    label1.Text = "Health: " + Core.sante;
+                    hpBar.Value = Core.sante;
+                    System.Media.SystemSounds.Beep.Play(); // play sound
+                }
             }
         }
 
@@ -241,6 +275,18 @@ namespace LaForetmagiqueWin
                     }
                 }
 
+                // Check collision with redStrumf1
+                if (player1.Bounds.IntersectsWith(redStrumf1.Bounds))
+                {
+                    _lblPressE.Location = new Point(redStrumf1.Location.X, redStrumf1.Location.Y - 20);
+                    _lblPressE.Visible = true;
+                    _lblPressE.BringToFront();
+                }
+                else
+                {
+                    _lblPressE.Visible = false;
+                }
+
                 // we mean by the Coin the Berry , but we will keep the name Coin for the code simplicity
                 foreach (Coin coin in Core.coins)
                 {
@@ -294,6 +340,94 @@ namespace LaForetmagiqueWin
             }
         }
 
+        private void OpenExchangeWindow()
+        {
+            // Pause the game
+            Events.Stop();
+            collusion.Stop();
+            Core.IsUp = false; Core.IsDown = false; Core.IsLeft = false; Core.IsRight = false;
 
+            Form shopForm = new Form();
+            shopForm.Text = "Exchange Details";
+            shopForm.Size = new Size(300, 200);
+            shopForm.StartPosition = FormStartPosition.CenterParent;
+            shopForm.FormBorderStyle = FormBorderStyle.FixedDialog;
+            shopForm.MaximizeBox = false;
+            shopForm.MinimizeBox = false;
+            shopForm.BackColor = Color.FromArgb(40, 40, 40);
+
+            Label lblInfo = new Label();
+            lblInfo.Text = "5 Berries = 1 Red Potion";
+            lblInfo.ForeColor = Color.White;
+            lblInfo.Location = new Point(20, 20);
+            lblInfo.AutoSize = true;
+            shopForm.Controls.Add(lblInfo);
+
+            Label lblPotions = new Label();
+            lblPotions.Text = "Quantity:";
+            lblPotions.ForeColor = Color.White;
+            lblPotions.Location = new Point(20, 60);
+            lblPotions.AutoSize = true;
+            shopForm.Controls.Add(lblPotions);
+
+            NumericUpDown numQuantity = new NumericUpDown();
+            numQuantity.Location = new Point(100, 58);
+            numQuantity.Minimum = 1;
+            numQuantity.Maximum = 99;
+            numQuantity.Value = 1;
+            shopForm.Controls.Add(numQuantity);
+
+            Button btnExchange = new Button();
+            btnExchange.Text = "Exchange";
+            btnExchange.Location = new Point(40, 110);
+            btnExchange.Enabled = Core.berriesCollected >= (int)numQuantity.Value * 5;
+            shopForm.Controls.Add(btnExchange);
+
+            Button btnCancel = new Button();
+            btnCancel.Text = "Cancel";
+            btnCancel.Location = new Point(150, 110);
+            shopForm.Controls.Add(btnCancel);
+
+            numQuantity.ValueChanged += (sender, args) =>
+            {
+                btnExchange.Enabled = Core.berriesCollected >= (int)numQuantity.Value * 5;
+            };
+
+            btnCancel.Click += (sender, args) =>
+            {
+                shopForm.Close();
+            };
+
+            btnExchange.Click += (sender, args) =>
+            {
+                int cost = (int)numQuantity.Value * 5;
+                if (Core.berriesCollected >= cost)
+                {
+                    Core.berriesCollected -= cost;
+                    Core.redPotionsCollected += (int)numQuantity.Value;
+                    
+                    for (int i = 0; i < (int)numQuantity.Value; i++)
+                    {
+                        var redPotion = new RedPotion { Name = "Red Potion", HealAmount = 50, x = player1.Location.X, y = player1.Location.Y, IsCollected = true };
+                        _dbPlayer.Items.Add(redPotion);
+                        _dbContext.RedPotions.Add(redPotion);
+                    }
+                    _dbContext.SaveChanges();
+
+                    lblRedPotion.Text = "Red Potions: " + Core.redPotionsCollected;
+                    MessageBox.Show("Exchange successful!");
+                    shopForm.Close();
+                }
+            };
+
+            shopForm.FormClosed += (sender, args) =>
+            {
+                Events.Start();
+                collusion.Start(); // Resume game
+            };
+
+            shopForm.ShowDialog();
+        }
     }
 }
+

@@ -11,5 +11,8 @@ namespace LaForetMagique.Models
         public int AttackPower { get; set; }
 
         public bool IsHostile { get; set; } = true;
+
+        public int? SchtroumpfId { get; set; }
+        public Schtroumpf? Schtroumpf { get; set; }
     }
 }

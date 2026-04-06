@@ -32,20 +32,58 @@ namespace LaForetMagique.Data
         {
             base.OnModelCreating(modelBuilder);
 
-            // Configuration de l'héritage TPH (Table Per Hierarchy)
-            // Toutes les entités dans une seule table
-            modelBuilder.Entity<Entity>()
-                .HasDiscriminator<string>("EntityType")
-                .HasValue<Schtroumpf>("Schtroumpf")
-                .HasValue<Spider>("Spider")
-                .HasValue<Bzzfly>("BzzFly")
-                .HasValue<RedPotion>("RedPotion")
-                .HasValue<BluePotion>("BluePotion")
-                .HasValue<Berry>("Berry");
+            // TPT mapping strategy (Table Per Type)
+            modelBuilder.Entity<Entity>().UseTptMappingStrategy();
 
             // Index pour améliorer les performances de recherche par coordonnées
             modelBuilder.Entity<Entity>()
                 .HasIndex(e => new { e.x, e.y });
+
+            // Configurations via Fluent API
+            modelBuilder.Entity<Schtroumpf>()
+                .Property(s => s.Role)
+                .IsRequired()
+                .HasMaxLength(50);
+
+            // Configure Relationships
+            modelBuilder.Entity<Schtroumpf>()
+                .HasMany(s => s.Bugs)
+                .WithOne(b => b.Schtroumpf)
+                .HasForeignKey(b => b.SchtroumpfId)
+                .OnDelete(DeleteBehavior.NoAction);
+
+            modelBuilder.Entity<Schtroumpf>()
+                .HasMany(s => s.Items)
+                .WithOne(i => i.Schtroumpf)
+                .HasForeignKey(i => i.SchtroumpfId)
+                .OnDelete(DeleteBehavior.NoAction);
+
+            modelBuilder.Entity<Creature>()
+                .Property(c => c.Health)
+                .HasDefaultValue(100);
+
+            // -- NEW FLUENT API CONFS TO REINFORCE THE MODEL --
+            
+            // Ignore Computed Properties
+            modelBuilder.Entity<Creature>()
+                .Ignore(c => c.IsAlive);
+
+            // Default values and column configurations via Fluent API
+            modelBuilder.Entity<Entity>()
+                .Property(e => e.CreatedAt)
+                .HasDefaultValueSql("GETDATE()");
+
+            modelBuilder.Entity<Item>()
+                .Property(i => i.IsCollected)
+                .HasDefaultValue(false);
+
+            modelBuilder.Entity<Bug>()
+                .Property(b => b.AttackPower)
+                .HasDefaultValue(5);
+
+            modelBuilder.Entity<Bug>()
+                .Property(b => b.IsHostile)
+                .HasDefaultValue(true);
         }
     }
 }
