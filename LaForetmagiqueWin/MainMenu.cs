@@ -1,6 +1,8 @@
 using System;
 using System.Drawing;
 using System.Windows.Forms;
+using System.Linq;
+using Microsoft.EntityFrameworkCore;
 using LaForetmagiqueWin.src;
 using LaForetMagique.Data;
 using LaForetMagique.Models;
@@ -132,6 +134,8 @@ namespace LaForetmagiqueWin
             // Reset state
             Core.sante = 100;
             Core.berriesCollected = 0;
+            Core.redPotionsCollected = 0;
+            Core.bluePotionsCollected = 0;
             
             Form1 gameForm = new Form1();
             gameForm.FormClosed += (s, args) => this.Show();
@@ -145,23 +149,65 @@ namespace LaForetmagiqueWin
             {
                 using (var db = new LaforetMagiqueDbContext())
                 {
+                   // db.Database.EnsureDeleted(); // Dropping first as we changed the DB schema completely to TPT
                     db.Database.EnsureCreated();
                     
-                    var newPlayerStats = new Schtroumpf 
-                    { 
-                        Health = Core.sante, 
-                        ExperiencePoints = Core.berriesCollected * 10 
-                    };
-                    db.Schtroumpfs.Add(newPlayerStats);
+                    // Find the existing player in the database
+                    var currentPlayer = db.Schtroumpfs
+                                          .Include(s => s.Items)
+                                          .Include(s => s.Bugs)
+                                          .FirstOrDefault(s => s.Name == "Gamer");
 
-                    var enemyBug = new Bzzfly 
-                    { 
-                        Health = 30, // Or use actual enemy state if available globally
-                        AttackPower = 5
-                    };
-                    db.BzzFlies.Add(enemyBug);
+                    if (currentPlayer == null)
+                    {
+                        currentPlayer = new Schtroumpf { Name = "Gamer", MaxHealth = 100 };
+                        db.Schtroumpfs.Add(currentPlayer);
+                    }
 
-                    db.SaveChanges();
+                    // Update player stats
+                    currentPlayer.Health = Core.sante;
+                    currentPlayer.ExperiencePoints = Core.berriesCollected * 10;
+                    
+                    // Clear existing collections to overwrite
+                    currentPlayer.Items.Clear();
+                    currentPlayer.Bugs.Clear();
+                    
+                    // Add items stats to player
+                    for (int i = 0; i < Core.berriesCollected; i++)
+                    {
+                        currentPlayer.Items.Add(new Berry { Name = "Berry", HealAmount = 10 });
+                    }
+
+                    if (_existingGame != null)
+                    {
+                        foreach (Control ctrl in _existingGame.Controls)
+                        {
+                            if (ctrl is LaForetmagiqueWin.GameObject.BuzzBug bugControl)
+                            {
+                                var enemyBug = new Bzzfly 
+                                { 
+                                    Health = bugControl.BugData.Health,
+                                    AttackPower = bugControl.BugData.AttackPower,
+                                    x = bugControl.Location.X,
+                                    y = bugControl.Location.Y,
+                                    Name = "Bzzfly"
+                                };
+                                currentPlayer.Bugs.Add(enemyBug);
+                            }
+                        }
+                    }
+                    else
+                    {
+                        var enemyBug = new Bzzfly 
+                        { 
+                            Health = 30, 
+                            AttackPower = 5,
+                            Name = "Bzzfly"
+                        };
+                        currentPlayer.Bugs.Add(enemyBug);
+                    }
+
+                    db.SaveChanges(); // Persist changes properly without duplication
                     MessageBox.Show($"Game Saved!\nYour HP: {Core.sante}\nBerries Collected: {Core.berriesCollected}");
                 }
             }

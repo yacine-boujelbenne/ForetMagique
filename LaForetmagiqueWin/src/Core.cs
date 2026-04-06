@@ -28,6 +28,8 @@ namespace LaForetmagiqueWin.src
 
         public static int sante = 100;
         public static int berriesCollected = 0;
+        public static int redPotionsCollected = 0;
+        public static int bluePotionsCollected = 0;
 
 
     }

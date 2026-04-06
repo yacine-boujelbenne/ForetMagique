@@ -35,6 +35,8 @@
             label1 = new Label();
             collusion = new System.Windows.Forms.Timer(components);
             hpBar = new ProgressBar();
+            lblRedPotion = new Label();
+            lblBluePotion = new Label();
             buzzBug1 = new LaForetmagiqueWin.GameObject.BuzzBug();
             redStrumf1 = new LaForetmagiqueWin.GameObject.RedStrumf();
             SuspendLayout();
@@ -81,6 +83,30 @@
             hpBar.TabIndex = 2;
             hpBar.Value = 100;
             // 
+            // lblRedPotion
+            // 
+            lblRedPotion.AutoSize = true;
+            lblRedPotion.BackColor = Color.Transparent;
+            lblRedPotion.Font = new Font("Joystix Monospace", 12F, FontStyle.Bold);
+            lblRedPotion.ForeColor = Color.Red;
+            lblRedPotion.Location = new Point(230, 16);
+            lblRedPotion.Name = "lblRedPotion";
+            lblRedPotion.Size = new Size(200, 23);
+            lblRedPotion.TabIndex = 5;
+            lblRedPotion.Text = "Red Potions: 0";
+            // 
+            // lblBluePotion
+            // 
+            lblBluePotion.AutoSize = true;
+            lblBluePotion.BackColor = Color.Transparent;
+            lblBluePotion.Font = new Font("Joystix Monospace", 12F, FontStyle.Bold);
+            lblBluePotion.ForeColor = Color.DodgerBlue;
+            lblBluePotion.Location = new Point(230, 40);
+            lblBluePotion.Name = "lblBluePotion";
+            lblBluePotion.Size = new Size(200, 23);
+            lblBluePotion.TabIndex = 6;
+            lblBluePotion.Text = "Blue Potions: 0";
+            // 
             // buzzBug1
             // 
             buzzBug1.BackColor = Color.Transparent;
@@ -104,6 +130,8 @@
             ClientSize = new Size(800, 450);
             Controls.Add(redStrumf1);
             Controls.Add(buzzBug1);
+            Controls.Add(lblRedPotion);
+            Controls.Add(lblBluePotion);
             Controls.Add(hpBar);
             Controls.Add(label1);
             Controls.Add(player1);
@@ -125,6 +153,8 @@
         private Label label1;
         private System.Windows.Forms.Timer collusion;
         private ProgressBar hpBar;
+        public Label lblRedPotion;
+        public Label lblBluePotion;
         private GameObject.BuzzBug buzzBug1;
         private GameObject.RedStrumf redStrumf1;
     }
